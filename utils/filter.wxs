@@ -1,0 +1,10 @@
+var two_one = function (valb,vals){
+  if (vals){
+    return valb+'-'+vals
+  }else{
+    return valb
+  }
+}
+module.exports = {
+  two_one: two_one,
+};

@@ -1,0 +1,101 @@
+<!--index.wxml-->
+<view class="container">
+  <view>
+    <swiper bindtap='ruleshow' circular='true' class='swiper' indicator-dots="true" autoplay="true" interval="6000" duration="1000">
+      <swiper-item>
+        <image src="../../images/swipe9.jpg" class="slide-image" width="355" height="150" mode='widthFix'/>
+      </swiper-item>
+      <swiper-item>
+        <image src="https://kaijin.zhoumc.cn/jeecg-boot/sys/common/view/files/wechat/swipe2.png" class="slide-image" width="355" height="150" mode='widthFix'/>
+      </swiper-item>
+      <swiper-item>
+        <image src="https://kaijin.zhoumc.cn/jeecg-boot/sys/common/view/files/wechat/swipe3.gif" class="slide-image" width="355" height="150" mode='widthFix'/>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- <view class="flexl numlist">
+    <view class="ramainflex">
+      <view class="ramainimg fleximg"><image mode="widthFix" src="../../images/dati2.png"></image> </view>
+      <view class="fleximg numtxt">今日答题还剩余<view>{{numlist.questionSurplusSize}}</view>次</view>
+    </view> -->
+    <!-- <view class="ramainflex">
+      <view class="ramainimg fleximg ramainimgright"><image mode="widthFix" src="../../images/photoget.png"></image> </view>
+      <view class="fleximg numtxt">今日随手拍还剩余<view>{{numlist.sspSurplusSize}}</view>次</view>
+    </view> -->
+  <!-- </view> -->
+  <view class='usertxt flex' wx:if='{{islogin}}'>
+    <view class="gs">您所属：{{userinfotxt.area}}</view>
+    <!-- <view>工种：{{userinfotxt.team}}</view> -->
+  </view>
+  <view class='content'>
+    <picker class='dat'  bindchange="bindexerciseChange" value="{{index}}" range="{{title}}"> 
+      <view class='datimg fleximg'><image mode='widthFix' bindtap="bindViewTap" class="userinfo-avatar" src="../../images/dati2.png"></image></view>
+      <view class='dattxt'>答题</view>
+      <view class='empower' wx:if='{{empowershow}}' catchtap="power" data-type="title"></view>
+    </picker>
+    <picker class='dat study' bindchange="bindstudyChange" data-study="{{studyres}}" value="{{index}}" range="{{study}}">
+      <view class='datimg fleximg'><image mode='widthFix' bindtap="bindViewTap" class="userinfo-avatar" src="../../images/study1.png"></image></view> 
+      <view class='dattxt'>学习</view>
+      <view class='empower' wx:if='{{empowershow}}' catchtap="power" data-type="study"></view>
+    </picker> 
+  </view>
+  <view class="photopre fleximg">
+    <view class='dat study' bindtap="tophoto">
+      <view class='datimg fleximg'><image mode='widthFix' bindtap="bindViewTap" class="userinfo-avatar" src="../../images/photo1.png"></image></view> 
+      <view class='dattxt'>随手拍</view>
+      <view class='empower' wx:if='{{empowershow}}' catchtap="power" data-type="study"></view>
+    </view> 
+    <view class='dat study' bindtap="tomine">
+      <view class='datimg fleximg'><image mode='widthFix' bindtap="bindViewTap" class="userinfo-avatar" src="../../images/jfen.png"></image></view> 
+      <view class='dattxt'>提现</view>
+      <view class='empower' wx:if='{{empowershow}}' catchtap="power" data-type="study"></view>
+    </view> 
+  </view>
+  <view class='ruletxt flexl' bindtap='ruleshow'>
+    <view class='wenhimg fleximg'>
+      <image mode='widthFix' class="userinfo-avatar" src="../../images/wenh4.png"></image>
+    </view>
+    <view>规则</view>
+  </view>
+  <view class='rule' wx:if='{{ruleshow}}' catchtap="ruleshow">
+    <view class='rulesus' catchtap="ruleshows">
+      <view class='ruleone'>奖励规则</view>
+      <view class='ruletwo'>
+        <view>1.</view>
+        <view>每学习完一篇完整的文章或看完一个学习视频，会奖励10积分，每篇文章或视频只奖励一次；</view></view>
+      <view class='ruletwo'>
+        <view>2.</view>
+        <view>每天答的前五套不同的题根据分数可以获得相应积分，答对一道题可以获得1积分；</view>
+      </view>
+      <view class='ruletwo'>
+        <view>3.</view>
+        <view>在随手拍模块上传工地上有安全隐患的信息和图片，由管理员审核通过后可获得200积分，每天有一次获得积分的机会；</view>
+      </view>
+      <view class='ruletwo'>
+        <view>4.</view>
+        <view>小程序所得积分可兑换到微信零钱，兑换比例现为10:1(如10积分可以兑换1块钱)，后期比例可能会有所更改；</view>
+      </view>
+      <view class='bott flex'>
+        <view class='wenh5img fleximg'>
+          <image mode='widthFix' class="userinfo-avatar" src="../../images/wenh5.png"></image>
+        </view>
+        <view>奖励规则最终解释权归重庆高速集团顾问公司所有</view>
+      </view>
+      
+      <view class='chaimg fleximg' bindtap='ruleshow'>
+        <image mode='widthFix' class="userinfo-avatar" src="../../images/cha2.png"></image>
+      </view>
+    </view>
+  </view>
+  <!-- <view class='dh flexl' bindtap='tomine'>
+    <view class='fleximg dhimg'><image mode='widthFix' src='../../images/dh1.png'></image></view>
+    <view class='dhtxt'>去兑换积分</view>
+  </view> -->
+  <view class="ggao"  wx:if="{{isggaoshow=='yes'}}" style='height:{{ht}}px' catchtap="closegg">
+    <view class="ggaotxt" catchtap="ruleshows"> 
+      <view class="ggtxt">公告：</view>
+      <text>{{ggaomsg}}</text>
+      <view class="ggcha fleximg" catchtap="closegg"><image mode="widthFix" src="../../images/cha.png"></image> </view>
+    </view>
+  </view>
+</view>

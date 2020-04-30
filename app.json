@@ -13,7 +13,9 @@
     "pages/mine/getscore/getscore",
     "pages/mine/exchange/exchange",
     "pages/mine/uptitle/uptitle",
-    "pages/mine/mask/mask"
+    "pages/mine/mask/mask",
+    "pages/video/video",
+    "pages/video/videodetail/videodetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

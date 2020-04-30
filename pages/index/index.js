@@ -24,11 +24,7 @@ Page({
   onLoad: function () {
     this.gettitle();
     this.start()
-    
-    
-    
   },
-
 
   //调用wx.login获取oppenid
   start(){
@@ -157,18 +153,26 @@ Page({
   bindstudyChange(e) {
     console.log(e)
     let val = e.detail.value;
-    let id = e.currentTarget.dataset.study[val].id
-    if (id === "2asd52sdfgfdg25xc2qwzfew52d"){
+    let id = e.currentTarget.dataset.study[val].id;
+    let name = e.currentTarget.dataset.study[val].name;
+    //因为之前有视频页面，是根据id来跳到不同的页面，现在都是跳到一个页面可以不要需要if判断来跳，但怕后期再更改回有视频的样子，暂时没删
+    // if (id === "4dqw956xz4d89qweeqw416r" || "hhgty8415h8yjkkiup5dfgh85ae" || "2asd52sdfgfdg25xc2qwzfew52d"){
+    //   console.log('txt')
+    //   wx.navigateTo({
+    //     url: '../study/study?id=' + this.data.studyres[val].id+'&title='+name,
+    //   })
+    // }  
+    if (id === "2asd52sdfgfdg25xc2qwzfew52d") {
       console.log('sp')
       wx.navigateTo({
         url: '../video/video?id=' + this.data.studyres[val].id,
       })
-    } else if (id === "4dqw956xz4d89qweeqw416r" || "hhgty8415h8yjkkiup5dfgh85ae"){
+    } else if (id === "4dqw956xz4d89qweeqw416r" || "hhgty8415h8yjkkiup5dfgh85ae") {
       console.log('txt')
       wx.navigateTo({
-        url: '../study/study?id=' + this.data.studyres[val].id,
+        url: '../study/study?id=' + this.data.studyres[val].id + '&title=' + name,
       })
-    }  
+    }
   },
   tomine(){
     wx.switchTab({

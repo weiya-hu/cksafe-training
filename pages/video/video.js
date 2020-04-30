@@ -1,51 +1,44 @@
-// pages/study/study.js
-const app=getApp()
+// pages/video/video.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    studylist:[],
-    title:''
+    videolist:[],//视频列表
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (options) {
+    
   },
-  start(){
+  start() {
     var that = this;
     var pages = getCurrentPages()    //获取加载的页面
     var id = pages[pages.length - 1].options.id    //获取当前页面的对象
-    let title = pages[pages.length - 1].options.title;
-    //设置当前页面的标题
-    wx.setNavigationBarTitle({
-      title: title
-    })
-    var data = { id: id, openid: wx.getStorageSync('openId')};
+    var data = { id: id, openid: wx.getStorageSync('openId') };
     app.questUrl('jeecg-boot/wechat/learningmaterials/getByPid', 'post', data).then(function (res) {
       console.log(res)
       that.setData({
-        studylist: res.data.result,
-        title:title
+        videolist:res.data.result
       })
+      wx.setStorageSync('videos', res.data.result)
     })
   },
-  tostudydetail(e){
-    console.log(e)
-    var pdfitem = e.currentTarget.dataset.pdfitem,that=this;
-    wx.setStorageSync('pdfitem', pdfitem)
+  tovideodetail(e){
+    var idx = e.currentTarget.dataset.idx
     wx.navigateTo({
-      url: 'studydetail/studydetail?title='+that.data.title,
+      url: 'videodetail/videodetail?idx='+idx,
     })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**

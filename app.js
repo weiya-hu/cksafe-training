@@ -7,18 +7,14 @@ App({
     if(!islogin){
       wx.setStorageSync('islogin', false)
     }
-    
-    
-  },
-  onShow() {
-    this.globalData.isshowggao=true
-    console.log(this.globalData.isshowggao)
     //强制更新
     try {
+      console.log(wx.canIUse('getUpdateManager'))
       //使用更新对象之前判断是否可用
       if (wx.canIUse('getUpdateManager')) {
         const updateManager = wx.getUpdateManager()
         updateManager.onCheckForUpdate(function (res) {
+          console.log(res)
           // 请求完新版本信息的回调
           if (res.hasUpdate) {
             updateManager.onUpdateReady(function () {
@@ -56,6 +52,12 @@ App({
     } catch (e) {
       console.log(e)
     }
+    
+  },
+  onShow() {
+    this.globalData.isshowggao=true
+    console.log(this.globalData.isshowggao)
+    
   },
   questUrl(url,method, data) {
     wx.showLoading({
@@ -64,8 +66,8 @@ App({
     //返回一个Promise对象
     return new Promise(function (resolve, reject) {
       wx.request({
-        // url: 'https://kaijin.zhoumc.cn/'+url,
-        url: 'http://192.168.100.132:8080/'+url,
+        url: 'https://chengkai.zhoumc.cn/'+url,
+        // url: 'http://192.168.100.132:8080/'+url,
         method: method,
         data: data,
         //在header中统一封装报文头，这样不用每个接口都写一样的报文头定义的代码
@@ -108,8 +110,8 @@ App({
     //返回一个Promise对象
     return new Promise(function (resolve, reject) {
       wx.request({
-        // url: 'https://kaijin.zhoumc.cn/'+url,
-        url: 'http://192.168.100.132:8080/' + url,
+        url: 'https://chengkai.zhoumc.cn/'+url,
+        // url: 'http://192.168.100.132:8080/' + url,
         method: method,
         data: data,
         //在header中统一封装报文头，这样不用每个接口都写一样的报文头定义的代码
@@ -148,10 +150,10 @@ App({
   
   globalData: {
     exercisePostPaperFlag:true,//答题交卷开关，避免接口还没有返回多次点击交卷生效
-    url:'http://192.168.100.132:8080/',
-    imgurl:'http://192.168.100.132:8080/jeecg-boot/sys/common/view/',
-    // url:'https://kaijin.zhoumc.cn/',
-    // imgurl:'https://kaijin.zhoumc.cn/jeecg-boot/sys/common/view/',
+    // url:'http://192.168.100.132:8080/',
+    // imgurl:'http://192.168.100.132:8080/jeecg-boot/sys/common/view/',
+    url:'https://chengkai.zhoumc.cn/',
+    imgurl:'https://chengkai.zhoumc.cn/jeecg-boot/sys/common/view/',
     isshowggao:true
   }
 })

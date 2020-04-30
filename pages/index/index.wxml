@@ -6,10 +6,10 @@
         <image src="../../images/swipe9.jpg" class="slide-image" width="355" height="150" mode='widthFix'/>
       </swiper-item>
       <swiper-item>
-        <image src="https://kaijin.zhoumc.cn/jeecg-boot/sys/common/view/files/wechat/swipe2.png" class="slide-image" width="355" height="150" mode='widthFix'/>
+        <image src="https://chengkai.zhoumc.cn/jeecg-boot/sys/common/view/files/wechat/swipe2.png" class="slide-image" width="355" height="150" mode='widthFix'/>
       </swiper-item>
       <swiper-item>
-        <image src="https://kaijin.zhoumc.cn/jeecg-boot/sys/common/view/files/wechat/swipe3.gif" class="slide-image" width="355" height="150" mode='widthFix'/>
+        <image src="https://chengkai.zhoumc.cn/jeecg-boot/sys/common/view/files/wechat/swipe3.gif" class="slide-image" width="355" height="150" mode='widthFix'/>
       </swiper-item>
     </swiper>
   </view>

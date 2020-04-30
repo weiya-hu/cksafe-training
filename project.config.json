@@ -21,7 +21,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.2",
+	"libVersion": "2.10.4",
 	"appid": "wx408128d2c0c89293",
 	"projectname": "cksafe-training",
 	"debugOptions": {

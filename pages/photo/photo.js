@@ -87,6 +87,8 @@ Page({
           datashow: datashow,
           imageupdate: true,
           noempowor: false,
+          nomoreshow:false,
+          pageno: 2,
           imgloadsuccess: imgloadsuccess
         })
         //回到顶部
@@ -102,11 +104,14 @@ Page({
         })
         
       }
+      console.log(!that.data.nomoreshow)
     }) 
   },
   //上拉加载
   pulldown(){
+    console.log(this.data.pageno)
     var data = {
+      openid: wx.getStorageSync('openId'),
       unsafetypeId: this.data.unsafetypeId,
       bidsectionId: this.data.bidsectionId,
       pageNo: this.data.pageno,
@@ -136,6 +141,7 @@ Page({
         pageno:that.data.pageno + 1,
         nomoreshow: nomoreshow
       })
+      console.log(!that.data.nomoreshow)
     })
 
   },
@@ -226,7 +232,10 @@ Page({
   imageLoad(e) {
     console.log(e)
     var imgloadsuccess = this.data.imgloadsuccess, idxs = e.currentTarget.dataset;
-    imgloadsuccess[idxs.idx][idxs.idex] = false
+    if (imgloadsuccess[idxs.idx]){
+      imgloadsuccess[idxs.idx][idxs.idex] = false
+    }
+    
     this.setData({
       imgloadsuccess: imgloadsuccess
     })

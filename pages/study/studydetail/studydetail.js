@@ -16,6 +16,11 @@ Page({
   onLoad: function (options) {
     var pages = getCurrentPages()    //获取加载的页面
     var address = pages[pages.length - 1].options.address   //获取当前页面的对象
+    let title = pages[pages.length - 1].options.title
+    //设置当前页面的标题
+    wx.setNavigationBarTitle({
+      title: title
+    })
     this.setData({
       pdfitem: wx.getStorageSync('pdfitem')
     })
@@ -26,7 +31,9 @@ Page({
     var data = {
       openid: wx.getStorageSync('openId'),
       materialId: this.data.pdfitem.id
-    }
+    };
+    let duration = this.data.pdfitem.duration
+    console.log(parseInt(duration));
     this.setData({
       timer: setTimeout(() => {
         app.questUrl('jeecg-boot/wechat/addUserIntegral', 'post', data).then(function (res) {
@@ -37,7 +44,7 @@ Page({
             })
           }
         })
-      }, 40000)
+      }, parseInt(duration))
     })
   },
   looked(e){

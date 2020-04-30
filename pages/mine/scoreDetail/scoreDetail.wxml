@@ -1,5 +1,5 @@
 <!--pages/mine/scoreDetail/scoreDetail.wxml-->
-<view wx:if='{{scorelist}}'>
+<view wx:if='{{scorelist.length>0}}'>
   <view wx:for='{{scorelist}}' wx:key='index' class="flex item">
     <view class="itemleft">
       <view class="remark">{{item.remark}}</view>
@@ -14,6 +14,6 @@
   <view class="loading" wx:if='{{loadingshow}}'>加载中...</view>
   <view class="bot" wx:if='{{isupdate}}'>--- 我是有底线的 ---</view>
 </view>
-<view class="nodata" wx:else='{{scorelist}}'>
+<view class="nodata" wx:else='{{scorelist.length>0}}'>
   --- 您还没有积分记录哦 ---
 </view>
